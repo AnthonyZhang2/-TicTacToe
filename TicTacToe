@@ -1,0 +1,300 @@
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+#pragma region "defintions"
+
+string tl = " ";
+string tm = "  ";
+string tr = "   ";
+string ml = "    ";
+string mm = "     ";
+string mr = "      ";
+string bl = "       ";
+string bm = "        ";
+string br = "          ";
+
+
+
+string topLT = "#        ";
+string topLM = "#        ";
+string topLB = "#        ";
+
+string topMT = "#         ";
+string topMM = "#         ";
+string topMB = "#         ";
+
+string topRT = "#         #";    
+string topRM = "#         #";
+string topRB = "#         #";
+//_______________________________________________________________________________________________________
+
+string middleLT = "#        ";
+string middleLM = "#        ";
+string middleLB = "#        ";
+
+string middleMT = "#         ";
+string middleMM = "#         ";
+string middleMB = "#         ";
+
+string middleRT = "#         #";
+string middleRM = "#         #";
+string middleRB = "#         #";
+//_______________________________________________________________________________________________________
+
+string bottomLT = "#        ";
+string bottomLM = "#        ";
+string bottomLB = "#        ";
+
+string bottomMT = "#         ";
+string bottomMM = "#         ";
+string bottomMB = "#         ";
+
+string bottomRT = "#         #";
+string bottomRM = "#         #";
+string bottomRB = "#         #";
+
+bool gameRun = true;
+
+#pragma endregion
+void playerOneCheck(string s){
+    if(s == "tl" && tl != "OO"){
+        tl = "X";
+        topLT = "# XX  XX ";
+        topLM = "#   XX   ";
+        topLB = "# XX  XX ";
+    }
+    if(s == "tm" && tm != "OO"){
+        tm = "X";
+        topMT = "# XX  XX  ";
+        topMM = "#   XX    ";
+        topMB = "# XX  XX  ";
+    }
+    if(s == "tr" && tr != "OO"){
+        tr = "X";
+        topRT = "# XX  XX  #";
+        topRM = "#   XX    #";
+        topRB = "# XX  XX  #";
+    }
+    if(s == "ml" && ml != "OO"){
+        ml = "X";
+        middleLT = "# XX  XX ";
+        middleLM = "#   XX   ";
+        middleLB = "# XX  XX ";
+    }
+    if(s == "mm" && mm != "OO"){
+        mm = "X";
+        middleMT = "# XX  XX  ";
+        middleMM = "#   XX    ";
+        middleMB = "# XX  XX  ";
+    }
+    if(s == "mr" && mr != "OO"){
+        mr = "X";
+        middleRT = "# XX  XX  #";
+        middleRM = "#   XX    #";
+        middleRB = "# XX  XX  #";
+    }
+    if(s == "bl" && bl != "OO"){
+        bl = "X";
+        bottomLT = "# XX  XX ";
+        bottomLM = "#   XX   ";
+        bottomLB = "# XX  XX ";
+    }
+    if(s == "bm" && bm != "OO"){
+        bm = "X";
+        bottomMT = "# XX  XX  ";
+        bottomMM = "#   XX    ";
+        bottomMB = "# XX  XX  ";
+    }
+    if(s == "br" && br != "OO"){
+        br = "X";
+        bottomRT = "# XX  XX  #";
+        bottomRM = "#   XX    #";
+        bottomRB = "# XX  XX  #";
+    }
+
+}
+
+void playerTwoCheck(string s){
+    if(s == "tl" && tl != "XX"){
+        tl = "O";
+        topLT = "#   OOO   ";
+        topLM = "# OO   OO ";
+        topLB = "#   OOO   ";
+    }
+    if(s == "tm" && tm != "XX"){
+        tm = "O";
+        topMT = "#   OOO   ";
+        topMM = "# OO   OO ";
+        topMB = "#   OOO   ";
+    }
+    if(s == "tr" && tr != "XX"){
+        tr = "O";
+        topRT = "#   OOO   #";
+        topRM = "# OO   OO #";
+        topRB = "#   OOO   #";
+    }
+    if(s == "ml" && ml != "XX"){
+        ml = "O";
+        middleLT = "#   OOO  ";
+        middleLM = "# OO   OO";
+        middleLB = "#   OOO  ";
+    }
+    if(s == "mm" && mm != "XX"){
+        mm = "O";
+        middleMT = "#   OOO   ";
+        middleMM = "# OO   OO ";
+        middleMB = "#   OOO   ";
+        
+    }
+    if(s == "mr" && mr != "XX"){
+        mr = "O";
+        middleRT = "#   OOO   #";
+        middleRM = "# OO   OO #";
+        middleRB = "#   OOO   #";
+    }
+    if(s == "bl" && bl != "XX"){
+        bl = "O";
+        bottomLT = "#   OOO  ";
+        bottomLM = "# OO   OO";
+        bottomLB = "#   OOO  ";
+    }
+    if(s == "bm" && bm != "XX"){
+        bm = "O";
+        bottomMT = "#   OOO   ";
+        bottomMM = "# OO   OO ";
+        bottomMB = "#   OOO   ";
+    }
+    if(s == "br" && br != "XX"){
+        br = "O";
+        bottomRT = "#   OOO   #";
+        bottomRM = "# OO   OO #";
+        bottomRB = "#   OOO   #";
+    }
+
+
+}
+
+unsigned char GameOver[] = "Game Finished!!!";
+
+void gameLogic(){
+    if((tl == tm && tm == tr && tl == tr) && (tl == "O" || tl == "X")){
+        gameRun = false;
+        cout << GameOver << endl;
+    }
+    if((ml == mm && mm == mr && ml == mr) && (tl == "O" || tl == "X")){
+        gameRun = false;
+        cout << GameOver << endl;
+    }
+    if((bl == bm && bm == br && bl == mr) && (tl == "O" || tl == "X")){
+        gameRun = false;
+        cout << GameOver << endl;
+    }
+    if((tl == ml && ml == bl && tl == bl) && (tl == "O" || tl == "X")){
+        gameRun = false;
+        cout << GameOver << endl;
+    }
+    if((tm == mm && mm == bm && tm == bm) && (tl == "O" || tl == "X")){
+        gameRun = false;
+        cout << GameOver << endl;
+    }
+    if((tr == mr && mr == br && tr == br) && (tl == "O" || tl == "X")){
+        gameRun = false;
+        cout << GameOver<< endl;
+    }
+    if((tr == mm && mm == bl && tr == bl) && (tl == "O" || tl == "X")){
+        gameRun = false;
+        cout << GameOver << endl;
+    }
+    if((tl == mm && mm == br && tl == br) && (tl == "O" || tl == "X")){
+        gameRun = false;
+        cout << GameOver<< endl;
+    }
+}
+
+
+int main(){
+    int turn = 0;
+    cout << "Player One's Turn!" << endl;
+    while(gameRun == true){
+        string userinput = "";
+       // cout << output << endl;
+
+        
+        
+        
+        for(int i = 0; i < 13; i++){
+            if(i == 0){
+                cout << "##############################" << endl;
+            }
+            if(i == 4){
+                cout << "##############################" << endl;
+            }
+            if(i == 8){
+                cout << "##############################" << endl;
+            }
+            if(i == 12){
+                cout << "##############################" << endl;
+            }
+            if(i == 1){
+                cout << topLT << topMT << topRT << endl;
+            } 
+            if(i == 2){
+                cout << topLM << topMM << topRM << endl;
+            } 
+            if(i == 3){
+                cout << topLB << topMB << topRB << endl;
+            } 
+            if(i == 5){
+                cout << middleLT << middleMT << middleRT << endl;
+            } 
+            if(i == 6){
+                cout << middleLM << middleMM << middleRM << endl;
+            } 
+            if(i == 7){
+                cout << middleLB << middleMB << middleRB << endl;
+            }  
+            if(i == 9){
+                cout << bottomLT << bottomMT << bottomRT << endl;
+            } 
+            if(i == 10){
+                cout << bottomLM << bottomMM << bottomRM << endl;
+            } 
+            if(i == 11){
+                cout << bottomLB << bottomMB << bottomRB << endl;
+            } 
+
+        }
+        cin >> userinput;
+        if(userinput == "stop"){
+            break;
+        }
+        if(turn % 2 == 0){
+            playerOneCheck(userinput);
+        }
+        if(turn % 2 != 0){
+            playerTwoCheck(userinput);
+        }
+        
+        for(int i = 0; i < 50; i++){
+            cout << "\n" << endl;
+        }
+        gameLogic();
+        turn += 1;
+        if(turn % 2 == 0){
+            cout << "Player 2!" << endl;
+        }
+        else{
+            cout << "Player 1!" << endl;
+        }
+        
+    }
+    
+
+}
+
+
+
+
+
